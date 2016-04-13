@@ -5,7 +5,7 @@ var qs = require('qs');
 var TOKEN = 'hkksspku';
 
 var getUserInfo = require('./user').getUserInfo;
-var replyText = require('./reply').replyText; 
+var replyText = require('./reply').reply; 
 
 var wss = require('./ws.js').wss;
 
@@ -57,7 +57,7 @@ var server = http.createServer(function (request, response) {
               						result.user = userInfo;
               				//将消息通过websocket广播
               						wss.broadcast(result);
-              				var res = replyText(result, '消息推送成功！');
+              				var res = reply(result, '消息推送成功！');
               						response.end(res);
             					})
           				}
