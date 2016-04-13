@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Wx client</title>
-  <link rel="stylesheet" href="/ace.min.css">
-  <link rel="stylesheet" href="/bootstrap.min.css">
+  <link rel="stylesheet" href="ace.min.css">
+  <link rel="stylesheet" href="bootstrap.min.css">
   <style>
   #msg {
   	margin-left:16.667%;
