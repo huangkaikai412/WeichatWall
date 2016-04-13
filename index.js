@@ -2,12 +2,12 @@ var PORT = 9529;
 
 var http = require('http');
 var qs = require('qs');
+var express = require('express');
 var TOKEN = 'hkksspku';
 
 var getUserInfo = require('./user').getUserInfo;
 var reply = require('./reply').reply; 
-
-var wss = require('./ws.js').wss;
+var wss = require('./ws').wss;
 
 function checkSignature(params, token){
   	//1. 将token、timestamp、nonce三个参数进行字典序排序
@@ -70,3 +70,11 @@ var server = http.createServer(function (request, response) {
 server.listen(PORT);
 
 console.log("Weixin server runing at port: " + PORT + ".");
+
+var app = new express();
+
+app.get('/',function(req,res) {
+	res.sendfile(--dirname + '/index.html');
+});
+
+http.createServer(app).listen(80);
