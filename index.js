@@ -74,7 +74,7 @@ console.log("Weixin server runing at port: " + PORT + ".");
 var app = new express();
 
 app.get('/',function(req,res) {
-	res.sendfile(--dirname + '/index.html');
+	res.sendfile(__dirname + '/index.html');
 });
 
 http.createServer(app).listen(80);
