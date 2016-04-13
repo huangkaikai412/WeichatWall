@@ -72,7 +72,7 @@ server.listen(PORT);
 console.log("Weixin server runing at port: " + PORT + ".");
 
 var app = new express();
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(__dirname+'/public'));
 
 app.get('/',function(req,res) {
 	res.sendfile(__dirname + '/index.html');
