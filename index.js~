@@ -5,7 +5,7 @@ var qs = require('qs');
 var TOKEN = 'hkksspku';
 
 var getUserInfo = require('./user').getUserInfo;
-var reply = require('./reply').reply; 
+var replyText = require('./reply').reply; 
 
 var wss = require('./ws.js').wss;
 
