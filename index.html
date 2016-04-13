@@ -3,30 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Wx client</title>
+  <link rel="stylesheet" href="ace.min.css">
+  <link rel="stylesheet" href="bootstrap.min.css">
   <style>
-    li > img{
-      width: 32px;
+  #msg {
+  	margin-left:16.667%;
+  	margin-top:30px;
+  	height:450px;
+    }
+  .well img {
+  	width:60px;
+  	margin-right:15px;
     }
   </style>
 </head>
 <body>
-  <ul id="messages">
-    
-  </ul>
+  <div class="col-sm-8" id="msg">
+	<h3 class="header smaller lighter red">微信墙</h3>
+  </div>
+
 <script type="text/javascript">
-  var msglist = document.getElementById('messages');
+  var msglist = document.getElementById('msg');
   var ws = new WebSocket('ws://120.27.123.90:10001/');
   ws.onmessage = function(evt)
   {
-    console.log(evt.data)
+    	console.log(evt.data)
     var msg = JSON.parse(evt.data);
     var content = msg.xml.Content[0];
-    msg.user = msg.user || {};
+    	msg.user = msg.user || {};
     var userName = msg.user.nickname;
     var headimg = msg.user.headimgurl;
-    var oLi = document.createElement('li');
-    oLi.innerHTML = userName + '<img src="'+headimg+'">' + '说:' + content;
-    msglist.appendChild(oLi);
+    var item = document.createElement('div');
+    	item.className = 'well';
+    	item.innerHTML = '<img src="'+headimg+'">' + content;
+    //var oLi = document.createElement('li');
+    //oLi.innerHTML = userName + '<img src="'+headimg+'">' + '说:' + content;
+	msglist.appendChild(item);
   };
 </script>
 </body>
